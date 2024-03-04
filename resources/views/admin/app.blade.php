@@ -387,6 +387,7 @@
             @endcan
 
             @can('admin')
+            <!-- @can('permissions', ['roles', 'view']) -->
             <li class="nav-item {{ request()->segment(2) == 'members' || request()->segment(2) == 'roles' || request()->segment(2) == 'modules'
                               ? 'menu-is-opening menu-open' : '' }}">
               <a href="{{ url('admin/members') }}" class="nav-link">
@@ -429,6 +430,7 @@
               </ul>
             </li>
             @endcan
+            <!-- @endcan -->
 
 
             @if(isset($permissions['tags']) && $permissions['tags']['rr_view']==1 )
@@ -492,13 +494,13 @@
             </li>
             @endcan
 
-            <!-- Tour Management -->
-            @can('permissions', ['sliders', 'view'])
+            <!-- Management -->
+            @can('permissions', ['categories', 'view'])
             <li class="nav-item">
               <a href="{{ url('admin/sliders') }}" class="nav-link">
                 <i class="nav-icon fas fa-map"></i>
                 <p>
-                  Tour Management
+                  Management
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -514,25 +516,25 @@
                 @endcan
                 <!-- Categories -->
 
-                <!-- Tour Packages -->
-                @can('permissions', ['tour_packages', 'view'])
+                <!-- Functionality -->
+                @can('permissions', ['functionality', 'view'])
                 <li class="nav-item">
-                  <a href="{{ route('admin::tour-packages.index') }}" class="nav-link">
+                  <a href="{{ route('admin::functionality.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-list"></i>
-                    <p>Tour Packages</p>
+                    <p>Functionality</p>
                   </a>
                 </li>
                 @endcan
-                <!-- End Tour Packages -->
+                <!-- End Functionality -->
 
               </ul>
             </li>
             @endcan
-            <!-- End Tour Management -->
+            <!-- End Management -->
 
 
             @can('site_settings')
-            <li class="nav-item">
+            <li class="nav-item d-none">
               <a href="{{url('admin/sitesettings')}}" class="nav-link">
                 <i class="nav-icon fas fa-cog"></i>
                 <p>Site Settings</p>

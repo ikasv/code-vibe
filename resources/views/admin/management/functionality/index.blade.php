@@ -12,11 +12,11 @@
 			<div class="card-header bg-primary">
 				<div class="row">
 					<div class="col-sm-6 text-left">
-						<h5 class="m-0">Tour Package List</h5>
+						<h5 class="m-0">Functionalities</h5>
 					</div>
-					@can('permissions', ['tour_packages', 'create'])
+					@can('permissions', ['functionality', 'create'])
 					<div class="col-sm-6 text-right">
-						<a class="btn btn-warning" href="{{ route('admin::tour-packages.create') }}">Add</a>
+						<a class="btn btn-warning" href="{{ route('admin::functionality.create') }}">Add</a>
 					</div>
 					@endcan
 				</div>
@@ -54,12 +54,12 @@
 										<td>{{ $record->name }}</td>
 										<td>{!! $record->status_label_view !!}</td>
 										<td class="text-center">
-											@can('permissions', ['tour_packages', 'edit'])
-											<a href="{{ route('admin::tour-packages.edit',$record->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+											@can('permissions', ['functionality', 'edit'])
+											<a href="{{ route('admin::functionality.edit',$record->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
 											@endcan
 
-											@can('permissions', ['tour_packages', 'delete'])
-											<form action="{{ route('admin::tour-packages.destroy',$record->id) }}" method="post" class="d-inline">
+											@can('permissions', ['functionality', 'delete'])
+											<form action="{{ route('admin::functionality.destroy',$record->id) }}" method="post" class="d-inline">
 												@csrf
 												@method('DELETE')
 												<button type="button" class="btn btn-danger btn-sm ml-2" onclick="deleteRecord(this)"><i class="fa fa-trash"></i></button>

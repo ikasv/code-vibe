@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\Management\MemberController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\TourPackageController;
+use App\Http\Controllers\Admin\FunctionalityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CustomAuth\AdminAuthController;
 
@@ -30,7 +30,7 @@ Route::group(['as' => 'admin::', 'middleware' => 'auth:admin'], function(){
 			'sitesettings' 				=>  SiteSettingController::class,
 			'sliders' 					=>  SliderController::class,
 			'users' 					=>  UserController::class,			
-			'tour-packages' 			=>  TourPackageController::class,
+			'functionality' 			=>  FunctionalityController::class,
 		]);
 		# End Resources
 		
