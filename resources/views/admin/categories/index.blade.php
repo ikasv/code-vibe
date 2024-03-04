@@ -43,7 +43,6 @@
 								<tr>
 									<th style="width: 50px;" class="text-center">#</th>
 									<th>Name</th>
-									<th>Status</th>
 									<th style="width: 100px;" class="text-center">Action</th>
 								</tr>
 							</thead>
@@ -51,8 +50,7 @@
 								@foreach ($categories as $row)
 									<tr>
 										<td class="text-center">{{ $loop->iteration }}</td>
-										<td>{{ $row->name }} {{ $row->parent_id == 0 ? '( Main )' : '' }}</td>
-										<td>{!! $row->status_label_view !!}</td>
+										<td>{{ $row->name }}</td>
 										<td class="text-center">
 											@can('permissions', ['categories', 'edit'])
 											<a href="{{ route('admin::categories.edit',$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

@@ -32,53 +32,17 @@ class CategoryController extends Controller
         $request->validate([
             'name'                  =>  "required|max:225",
           	'slug'                  =>  "required|max:225|unique:categories,slug,$request->id ?? 0 ",
-             'icon'                  =>  "image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",
-            'featured_image'        =>  "image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",
-            'banner_image'          =>  "image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",
-          
-        ]);
-
-        
-        $icon                           =   uploadFile($request, 'icon', 'category/icons');
-        $featured_image                 =   uploadFile($request, 'featured_image', 'category/featured_images');
-        $banner_image                   =   uploadFile($request, 'banner_image', 'category/banner_images');
-       
-        $category                       =    Category::updateOrCreate(
+          ]);
+   $category                       =    Category::updateOrCreate(
                                                                             [
                                                                                 'id'                    =>  $request->id
                                                                             ],
                                                                             [
                                                                                 'name'                  =>  $request->name,
                                                                                 'slug'                  =>  $request->slug,
-                                                                                'parent_id'             =>  $request->parent_id,
-                                                                                'icon'                  =>  $icon,
-                                                                                'featured_image'        =>  $featured_image,
-                                                                                'banner_image'          =>  $banner_image,
-                                                                                'short_description'     =>  $request->short_description,
-                                                                                'long_description'      =>  $request->long_description,
-                                                                                'show_on_menu'          =>  $request->show_on_menu,
-                                                                                'show_on_home'          =>  $request->show_on_home,
-                                                                                'show_on_footer'        =>  $request->show_on_footer,
-                                                                                'status'                =>  $request->status,
-                                                                                'meta_title'            =>  $request->meta_title,
-                                                                                'meta_description'      =>  $request->meta_description,
-                                                                              	'is_featured'			=>	$request->is_featured,
-                                                                              	'is_popular'			=>	$request->is_popular
-                                                                            ]
+                                                                           ]
                                                                         );
    
-        # Gallery Images
-        $gallery_images                           =   uploadGalleryFiles('gallery_images', 'category/gallery_images');
-
-        foreach($gallery_images as $gallery_image):
-            GalleryImage::create([
-                                    'type'                  =>  'category',
-                                    'parent_id'             =>  $category->id,
-                                    'name'                  =>  $gallery_image
-                                ]);
-        endforeach;
-        # End Gallery Images
-
         if($category):
             $msg                            =   $category->wasRecentlyCreated ? 
                                                         "<div class='alert alert-success'>Record added successfully </div>"
@@ -101,9 +65,7 @@ class CategoryController extends Controller
     {
         $categories                     =   Category::where('id', '!=', $category->id)->get();
 
-        $gallery_images                 =   GalleryImage::type('category')->whereParentId($category->id)->get();
-
-        return view("admin.categories.single", compact('categories', 'category', 'gallery_images'));
+        return view("admin.categories.single", compact('categories', 'category'));
     }
 
     public function destroy(Category $category)
