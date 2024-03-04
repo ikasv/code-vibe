@@ -5,14 +5,31 @@
         <div class="row justify-content-center my-5">
             <div class="col-md-5">
                 {{-- <div class="search-card card " style="background-image:url({{ url('/assets/front_img/giphy.gif')}});"> --}}
-                <div class="search-card card shadow">
-                    <div class="select-bar">
-                        <select name="select" id="select" class="form-control border-rounded">
-                            <option value="1">Name-1</option>
-                            <option value="2">Name-2</option>
-                            <option value="3">Name-3</option>
-                            <option value="4">Name-4</option>
-                        </select>
+                <div class="card shadow">
+                    <div class="card-header bg-primary">
+                        Code Vibe
+                    </div>
+                    <div class="card-body">
+
+                        <form action="{{ url('search') }}">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select name="category" id="select" class="form-select">
+                                        <option value="" selected disabled>Choose category</option>
+                                        <option value="mail">Mail</option>
+                                        <option value="pdf">Pdf</option>
+                                        <option value="excel">Excel</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-center mt-2">
+
+                                        <input type="submit" value="Search" class="btn btn-primary">
+                                </div>
+                            </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -22,9 +39,7 @@
 @section('script')
     <script>
         $("#select").select2({
-            tags: true,
-            // dropdownParent: $('#modal), // if select in modal
-            theme: "bootstrap",
+            tags: true
         });
     </script>
 @endsection

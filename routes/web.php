@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::get('clearCache', function() {
     Artisan::call('view:clear');
        Artisan::call('route:clear');
@@ -19,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::view('search', 'search');
+Route::get('{slug}', [HomeController::class, 'single_view']);
 
 Route::view('about-us', 'about');
 
