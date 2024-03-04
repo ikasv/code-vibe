@@ -1,23 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-md-5">
+                {{-- <div class="search-card card " style="background-image:url({{ url('/assets/front_img/giphy.gif')}});"> --}}
+                <div class="search-card card shadow">
+                    <div class="select-bar">
+                        <select name="select" id="select" class="form-control border-rounded">
+                            <option value="1">Name-1</option>
+                            <option value="2">Name-2</option>
+                            <option value="3">Name-3</option>
+                            <option value="4">Name-4</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
+@section('script')
+    <script>
+        $("#select").select2({
+            tags: true,
+            // dropdownParent: $('#modal), // if select in modal
+            theme: "bootstrap",
+        });
+    </script>
 @endsection
