@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card mt-4">
+            <div class="card my-4">
                 <div class="card-header">
                     <div class="row">
                             <div class="col-md-10">

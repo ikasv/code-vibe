@@ -6,7 +6,7 @@
             <div class="col-md-5">
                 {{-- <div class="search-card card " style="background-image:url({{ url('/assets/front_img/giphy.gif')}});"> --}}
                 <div class="card shadow">
-                    <div class="card-header bg-primary">
+                    <div class="card-header bg-primary text-white">
                         Code Vibe
                     </div>
                     <div class="card-body">
