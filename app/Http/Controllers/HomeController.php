@@ -37,19 +37,16 @@ class HomeController extends Controller
     public function single_view(){
         $content = 
         <<<EOC
-                    # How to send mail in php
-                    ## _Simple code for sending mail in core php_
-                    
-                    Refresh Page and get new inspire quotes
-                    
-                    - Install
-                    - daily-inspire endpoint on url
-                    - ✨ Magic ✨
-                    
-                    ## Installation
+                    # ✨ How to send mail in php ✨
+
+                    ## Requirements
+                    - php ( 8.0^ ) 
+                    - Laravel ( 9.0^ ) 
+
+                    ## Description
                     
                     
-                    Run command in project terminal
+                    Run below code
                     
                     ```
                     <?php
@@ -65,10 +62,15 @@ class HomeController extends Controller
                     ```
                     
                     
-                    ## License
+                    ## Live Preview
+                    [Duck Duck Go](https://duckduckgo.com)
                     
-                    MIT
+                    ## Download Project
+                    [Duck Duck Go](https://duckduckgo.com)
                     
+                    ## Useful Links
+                    [Duck Duck Go](https://duckduckgo.com)
+
                     **Free Software, Hell Yeah!**
                     EOC;
         $parsedContent = $this->markdownService->parse($content);
