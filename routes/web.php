@@ -17,17 +17,18 @@ Route::get('/', function () {
     return view('home');
 });
 
-Auth::routes();
+Route::get('/home', function () {
+    return view('document.index');
+});
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Auth::routes();
 Route::view('search', 'search');
-Route::get('{slug}', [HomeController::class, 'single_view']);
 
 Route::view('about-us', 'about');
 
 Route::get('linkstorage', function () {
     Artisan::call('storage:link');
 });
-Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::view('{slug}',  'document.single_view');
